@@ -1,0 +1,45 @@
+.topNav {
+    background-color: green;
+    background-size:50px;
+    border-color: black;
+    border-style: solid;
+    border-width: thick;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.leftNav {
+    height: 200px;
+    float: left;
+    width: 20%;
+    background: gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.leftNav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+H1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+form {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+}
+
+.CUButton {
+    background-color: green;
+    background-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+}
+
