@@ -34,7 +34,11 @@ H1 {
 form {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 12px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
 }
+
 
 .CUButton {
     background-color: green;
@@ -43,3 +47,12 @@ form {
     font-size: 12px;
 }
 
+section H1 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+}

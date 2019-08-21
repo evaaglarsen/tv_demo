@@ -7,20 +7,27 @@
 </head>
 
 <body>
+        <script>
+                function clickedSubmit() {
+                    console.log('submit was clicked')
+                  
+                }
+                </script>
+
     <nav class="topNav">
         <div>Manage</div>
-        <div>Preview</div>
+        <div><a href=previewPage.html>Preview</a></div>
     </nav>
     <br>
     <section class="leftNav">
         <h1>Shows</h1>
-        <ul>
-            <li><a href="">Modern Family</a></li>
-            <li><a href="">Queen of the South</a></li>
-        </ul>
+        <button onclick="">Modern Family</button>
+        <button>-</button>
+        <br>
+        <button onclick="">Queen of the South</button>
     </section>
 
-    <form action="/action_page.php">
+      <form action="/action_page.php">
         <h1>New/Edit Show</h1>
         Name: <input name="showName" type="text">
         <br><br>
