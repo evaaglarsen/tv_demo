@@ -2,6 +2,6 @@
     width: 280px;
     border-right: solid black;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }

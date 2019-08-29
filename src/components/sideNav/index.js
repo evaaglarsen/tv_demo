@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import './index.css';
 import { Link } from 'react-router-dom'
-export default class sideNav extends Component {
+export default class SideNav extends Component {
     renderDelete = () => {
         if (this.props.allowDelete === true) {
-            return this.button;
+            return <button>-</button>
         }
     }
     
     render() {
         return (
-            <div>
+            <div className = "side-nav">
                 <button>{this.props.name}</button>
                 {this.renderDelete()}
             </div>

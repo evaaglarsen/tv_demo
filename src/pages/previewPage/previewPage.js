@@ -1,27 +1,22 @@
 import React, { Component } from "react"
-import sideNav from '../../components/sideNav'
+import SideNav from '../../components/sideNav'
 export default class PreviewPage extends Component {
     render() {
         return (
-            <div>
-                <section class="sideNav">
-                    <h1>Shows</h1>
-                    <ul>
-                        <li>Chuck</li>
-                        <li>Queen of the South</li>
-                    </ul>
-                </section>
-
-                <section>
+            <React.Fragment className="Preview-Page">   
+                    <nav id="sideNav">
+                        <SideNav name="Chuck" allowDelete={true} />
+                        <SideNav name="Queen of the South" allowDelete={true} />
+                    </nav>
+                               
                     <h1>
-                        <inline>Queen of the South</inline>
-                        <inline>Rating: R</inline>
+                        <div>Queen of the South</div>
+                        <div>Rating: 8</div>
                     </h1>
 
-                    <img src='../images/QueenoftheSouth.jpg' alt="Queen of the South"/>
-                </section>
-
-            </div>
+                    <img src='../images/QueenoftheSouth.jpg' alt="Queen of the South" />
+                
+            </React.Fragment>
         )
     }
 }

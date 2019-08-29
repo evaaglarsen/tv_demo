@@ -24,7 +24,7 @@ nav.topNav ul{
 }
 
 .leftNav{
-  display: float;
+  display: flex;
   width: 280px;
   border-right: solid black;
   display: flex;
