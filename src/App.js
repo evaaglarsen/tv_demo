@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import ManagePage from './pages/managePage/managePage'
-import PreviewPage from './pages/previewPage/previewPage'
-import Navigation from './components/navigation'
+import ManagePage from './pages/managePage'
+import PreviewPage from './pages/previewPage'
+import Navigation from './components/topNav'
 import { Route } from 'react-router-dom'
 class App extends Component {
   render() {

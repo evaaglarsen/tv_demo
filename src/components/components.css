@@ -1,0 +1,38 @@
+.side-nav{
+    width: 225px;
+    border-right: solid black;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: gray;
+    height: 100%;
+    padding-top: 20px;
+    border-width: 2px;
+}
+
+.topNav{
+    background-color: gray;
+    border-width: 50px;
+    height: 100px;
+    border-bottom: solid black;
+    border-width: 2px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.topNav div{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    display: flex;
+    align-content: flex-end;
+}
+
+button{
+    height: 40px;
+    background-color: blue;
+    border: solid black;
+    border-width: thin;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    
+}

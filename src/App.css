@@ -1,7 +1,4 @@
 .App {
-    width: 900px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
+    width: 900px; 
   }
 

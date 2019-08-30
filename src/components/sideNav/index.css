@@ -1,7 +1,0 @@
-.side-nav{
-    width: 280px;
-    border-right: solid black;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}

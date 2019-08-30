@@ -1,11 +1,17 @@
 import React, { Component } from "react"
-import SideNav from '../../components/sideNav'
+import SideNav from '../components/sideNav'
+import './pages.css';
 export default class ManagePage extends Component {
     render() {
         return (
-            <React.Fragment className="Manage-Page">
+            <div className="content-wrapper">
                 <div id="sideNav">
-                    <SideNav name="Chuck" allowDelete={true} />
+                    <SideNav
+                        name="Chuck"                    
+                        allowDelete={true}                      //all these are properties of this button
+                        selectHandler={this.selectHandler}
+                        deleteHandler={this.deleteHandler}
+                    />
                     <SideNav name="Queen of the South" allowDelete={true} />
                 </div>
                 <div>
@@ -18,7 +24,7 @@ export default class ManagePage extends Component {
                     <br /><br />
                     <button type="button">Create/Update</button>
                 </div>
-            </React.Fragment>
+            </div>
         )
     }
 }

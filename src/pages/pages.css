@@ -1,0 +1,11 @@
+.content-wrapper {
+    display: flex
+}
+
+.content-wrapper div{
+    margin-right: 40px
+}
+
+.Preview-Page {
+    display: flex;
+}

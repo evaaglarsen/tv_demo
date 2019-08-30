@@ -1,9 +1,10 @@
 import React, { Component } from "react"
-import SideNav from '../../components/sideNav'
+import SideNav from '../components/sideNav'
+import './pages.css';
 export default class PreviewPage extends Component {
     render() {
         return (
-            <React.Fragment className="Preview-Page">   
+            <div className="Preview-Page">   
                     <nav id="sideNav">
                         <SideNav name="Chuck" allowDelete={true} />
                         <SideNav name="Queen of the South" allowDelete={true} />
@@ -16,7 +17,7 @@ export default class PreviewPage extends Component {
 
                     <img src='../images/QueenoftheSouth.jpg' alt="Queen of the South" />
                 
-            </React.Fragment>
+            </div>
         )
     }
 }
