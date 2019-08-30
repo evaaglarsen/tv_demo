@@ -2,17 +2,35 @@ import React, { Component } from "react"
 import SideNav from '../components/sideNav'
 import './pages.css';
 export default class ManagePage extends Component {
+
+   tvShowSelected = () => {
+       console.log('tvShowSelected')
+   }
+
+   tvShowDeleted = () => {
+       console.log('tvShowDeleted')
+   }
+
     render() {
         return (
             <div className="content-wrapper">
                 <div id="sideNav">
                     <SideNav
-                        name="Chuck"                    
-                        allowDelete={true}                      //all these are properties of this button
+                        name="TV Show 1"                                         //all these are properties of this button
+                        allowDelete={true}                      
                         selectHandler={this.selectHandler}
                         deleteHandler={this.deleteHandler}
+                        tvShowSelected={this.tvShowSelected}
+                        tvShowDeleted={this.tvShowDeleted}
                     />
-                    <SideNav name="Queen of the South" allowDelete={true} />
+                    <SideNav 
+                        name="TV Show 2" 
+                        allowDelete={true} 
+                        selectHandler={this.selectHandler}
+                        deleteHandler={this.deleteHandler}
+                        tvShowSelected={this.tvShowSelected}
+                        tvShowDeleted={this.tvShowDeleted}
+                        />
                 </div>
                 <div>
                     <h1>New/Edit Show</h1>
