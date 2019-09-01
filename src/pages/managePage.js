@@ -3,34 +3,42 @@ import SideNav from '../components/sideNav'
 import './pages.css';
 export default class ManagePage extends Component {
 
-   tvShowSelected = () => {
-       console.log('tvShowSelected')
-   }
+    //functions defined here
+    tvShowSelected = () => {
+        console.log('tvShowSelected')
+    }
 
-   tvShowDeleted = () => {
-       console.log('tvShowDeleted')
-   }
+    tvShowDeleted = () => {
+        console.log('tvShowDeleted')
+    }
 
+    saveTVShow = () => {
+        console.log('log the name of the show')
+    }
+
+    //rendering this page
     render() {
         return (
             <div className="content-wrapper">
                 <div id="sideNav">
                     <SideNav
-                        name="TV Show 1"                                         //all these are properties of this button
-                        allowDelete={true}                      
+                        title="Chuck"                                       //all these are properties of this button
+                        allowDelete={true}
                         selectHandler={this.selectHandler}
                         deleteHandler={this.deleteHandler}
                         tvShowSelected={this.tvShowSelected}
                         tvShowDeleted={this.tvShowDeleted}
+                        saveTVShow={this.saveTVShow}
                     />
-                    <SideNav 
-                        name="TV Show 2" 
-                        allowDelete={true} 
+                    <SideNav
+                        title="Queen of the South"
+                        allowDelete={true}
                         selectHandler={this.selectHandler}
                         deleteHandler={this.deleteHandler}
                         tvShowSelected={this.tvShowSelected}
                         tvShowDeleted={this.tvShowDeleted}
-                        />
+                        saveTVShow={this.saveTVShow}
+                    />
                 </div>
                 <div>
                     <h1>New/Edit Show</h1>
@@ -40,7 +48,7 @@ export default class ManagePage extends Component {
                     <br /><br />
                     Image URL: <input rating="showImageURL" type="url" />
                     <br /><br />
-                    <button type="button">Create/Update</button>
+                    <button className="create" type="button">Create/Update</button>
                 </div>
             </div>
         )

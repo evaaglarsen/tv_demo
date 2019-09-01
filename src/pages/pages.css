@@ -9,3 +9,7 @@
 .Preview-Page {
     display: flex;
 }
+
+.create {
+    background-color: green;
+}

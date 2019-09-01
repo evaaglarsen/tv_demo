@@ -1,30 +1,31 @@
 import React, { Component } from 'react';
 import './components.css';
-import { Link } from 'react-router-dom'
 export default class SideNav extends Component {
 
+    //functions defined here
     selectHandler = () => {
-        //whatever this is supposed to do
+        console.log('selectHandler was clicked')
     }
 
     deleteHandler = () => {
-        //whatever this is supposed to do
+        console.log('deleteHandler was clicked')
     }
 
     renderDelete = () => {
         if (this.props.allowDelete === true) {
-            return <button>-</button>
+            return <button className="delete">-</button>
         }
     }
-    
+
+    //rendering this component
     render() {
         return (
-            <div className = "side-nav">
-                <button onClick={this.props.selectHandler} />
+            <div className="side-nav">
+                <button onClick={this.props.selectHandler}>
+                    {this.props.title}
+                </button>
                 {this.renderDelete()}
             </div>
         )
     }
 }
-
-
