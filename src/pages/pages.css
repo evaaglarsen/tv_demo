@@ -13,3 +13,18 @@
 .create {
     background-color: green;
 }
+
+.fieldName {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label, form input {
+    display: flex;
+    flex-direction: row;
+}
