@@ -2,23 +2,51 @@ import React, { Component } from "react"
 import SideNames from '../components/sideNames'
 import './pages.css';
 export default class ManagePage extends Component {
-
     state = {
-        showName: "",
-        showRating: "",
-        showURL: "",
-        inputName: "",
-        inputRating: "",
-        inputURL: ""
+        show: {
+            Name: "Chuck as placeholder",
+            Rating: "1",
+            URL: "http://www.chuck.com"
+        }
+    }
+
+    setName = (e) => {
+        this.setState({
+            show: {
+                Name: e.target.value,
+                Rating: this.state.show.name,
+                URL: this.state.show.URL
+            }
+        })
+    }
+
+    setRating = (e) => {
+        this.setState({
+            show: {
+                Name: this.state.show.name,
+                Rating: e.target.value,
+                URL: this.state.show.URL
+            }
+        })
+    }
+
+    setURL = (e) => {
+        this.setState({
+            show: {
+                Name: this.state.show.name,
+                Rating: this.state.show.name,
+                URL: e.target.value
+            }
+        })
     }
 
     //functions defined here
     tvShowSelected = () => {
         console.log("the tvShowSelected function ran");
         this.setState({
-            inputName: this.state.showName,
-            inputRating: this.state.showRating,
-            inputURL: this.state.showURL
+            Name: this.state.show.Name,
+            Rating: this.state.show.Rating,
+            URL: this.state.show.URL
         })
     }
 
@@ -33,34 +61,22 @@ export default class ManagePage extends Component {
 
     saveTVShow = () => {
         this.setState({
-            showName: this.state.inputName,
-            showRating: this.state.inputRating,
-            showURL: this.state.inputURL,
-            inputName: "",
-            inputRating: "",
-            inputURL: ""
+            Name: this.state.show.Name,
+            Rating: this.state.show.Rating,
+            URL: this.state.show.URL,
         })
     }
 
     renderSideNames = () => {
         return (
             <SideNames
-                name={this.state.showName}
+                name={this.state.show.Name}
                 allowDelete={true}
                 selectHandler={this.tvShowSelected}
                 deleteHandler={this.tvShowDeleted} />
         )
     }
 
-//Add an onClick event handler for both buttons each calling a function passed via props named 'selectHandler' and 'deleteHandler' 
-//Example: <button onClick={this.props.selectHandler}> 
-//NOTE: Do NOT invoke the functions 
-//Open ManagePage 
-//Add 2 functions named 'tvShowSelected' and 'tvShowDeleted' 
-//Both functions should console log that function's name 
-//For all TVShow components on ManagePage pass the new functions to their matching props 
-//Example: <TVShow selectHandler={this.tvShowSelected} deleteHandler={this.tvShowDeleted} /> 
-//Now when you click the TVShow buttons logs should appear in the console 
 
     //rendering this page
     render() {
@@ -81,44 +97,34 @@ export default class ManagePage extends Component {
                         <label className="fieldName">
                             Name:
                         <input type="text"
-                                value={this.state.inputName}
-                                onChange={(e) => {
-                                    this.setState({
-                                        inputName: e.target.value
-                                    })
-                                }}
+                                value={this.state.Name}
+                                onChange={(e) => { this.setName(e) }}
                             />
                         </label>
                         <br />
                         <label className="fieldName">
                             Rating:
                         <input type="rating"
-                                value={this.state.inputRating}
-                                onChange={(e) => {
-                                    this.setState({
-                                        inputRating: e.target.value
-                                    })
-                                }}
+                                value={this.state.Rating}
+                                onChange={(e) => { this.setRating(e) }}
                             />
                         </label>
                         <br />
                         <label className="fieldName">
                             Image URL:
                         <input type="url"
-                                value={this.state.inputURL}
-                                onChange={(e) => {
-                                    this.setState({
-                                        inputURL: e.target.value
-                                    })
-                                }}
+                                value={this.state.URL}
+                                onChange={(e) => { this.setURL(e) }}
+
                             />
                         </label>
                         <br />
-                        <button className="create" type="button">Create/Update</button>
+                        <button
+                            className="create" type="button"
+                            onClick={() => this.saveTVShow()}>Create/Update</button>
                     </form>
                 </div>
             </div>
-
         )
     }
 }
