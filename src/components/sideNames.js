@@ -42,8 +42,8 @@ export default class SideNames extends Component {
 }
 
 SideNames.propTypes = {
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
     allowDelete: PropTypes.bool,
     deleteHandler: PropTypes.func,
-    selectHandler: PropTypes.func
+    selectHandler: PropTypes.func.isRequired
 }
