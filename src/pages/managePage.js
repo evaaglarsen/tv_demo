@@ -4,18 +4,21 @@ import './pages.css';
 export default class ManagePage extends Component {
     state = {
         show: {
-            Name: "Chuck as placeholder",
-            Rating: "1",
-            URL: "http://www.chuck.com"
+            inputName: "Enter name of show",
+            inputRating: "Enter Rating",
+            inputURL: "Enter URL",
+            savedName: "",
+            savedRating: "",
+            savedURL: ""
         }
     }
 
     setName = (e) => {
         this.setState({
             show: {
-                Name: e.target.value,
-                Rating: this.state.show.name,
-                URL: this.state.show.URL
+                inputName: e.target.value,
+                inputRating: this.state.show.inputRating,
+                inputURL: this.state.show.inputURL
             }
         })
     }
@@ -23,9 +26,9 @@ export default class ManagePage extends Component {
     setRating = (e) => {
         this.setState({
             show: {
-                Name: this.state.show.name,
-                Rating: e.target.value,
-                URL: this.state.show.URL
+                inputName: this.state.show.inputName,
+                inputRating: e.target.value,
+                inputURL: this.state.show.inputURL
             }
         })
     }
@@ -33,50 +36,52 @@ export default class ManagePage extends Component {
     setURL = (e) => {
         this.setState({
             show: {
-                Name: this.state.show.name,
-                Rating: this.state.show.name,
-                URL: e.target.value
+                inputName: this.state.show.inputName,
+                inputRating: this.state.show.inputRating,
+                inputURL: e.target.value
             }
         })
     }
 
     //functions defined here
-    tvShowSelected = () => {
-        console.log("the tvShowSelected function ran");
+    ShowSelected = () => {
+        console.log("the ShowSelected function ran")
         this.setState({
-            Name: this.state.show.Name,
-            Rating: this.state.show.Rating,
-            URL: this.state.show.URL
+            inputName: this.state.show.inputName,
+            inputRating: this.state.show.inputRating,
+            inputURL: this.state.show.inputURL
         })
     }
 
-    tvShowDeleted = () => {
-        console.log("the tvShowDeleted function ran")
+    ShowDeleted = () => {
+        console.log("the ShowDeleted function ran")
         this.setState({
-            showName: "",
-            showRating: "",
-            showURL: ""
+            inputName: "",
+            inputRating: "",
+            inputURL: ""
         })
     }
 
-    saveTVShow = () => {
+    saveShow = () => {
         this.setState({
-            Name: this.state.show.Name,
-            Rating: this.state.show.Rating,
-            URL: this.state.show.URL,
+            savedName: this.state.show.inputName,
+            savedRating: this.state.show.inputRating,
+            savedURL: this.state.show.inputURL,
+            inputName: "",
+            inputRating: "",
+            inputURL: ""
         })
     }
 
-    renderSideNames = () => {
+    renderShows = () => {
         return (
             <SideNames
-                name={this.state.show.Name}
+                name={this.state.savedName}
                 allowDelete={true}
                 selectHandler={this.tvShowSelected}
                 deleteHandler={this.tvShowDeleted} />
         )
     }
-
 
     //rendering this page
     render() {
@@ -86,8 +91,7 @@ export default class ManagePage extends Component {
                 <div id="sideNames">
                     <div>
                         <h2>Shows</h2>
-                        {this.renderSideNames()}
-                        {this.renderSideNames()}
+                        {this.renderShows()}
                     </div>
 
                 </div>
@@ -97,7 +101,7 @@ export default class ManagePage extends Component {
                         <label className="fieldName">
                             Name:
                         <input type="text"
-                                value={this.state.Name}
+                                value={this.state.show.inputName}
                                 onChange={(e) => { this.setName(e) }}
                             />
                         </label>
@@ -105,7 +109,7 @@ export default class ManagePage extends Component {
                         <label className="fieldName">
                             Rating:
                         <input type="rating"
-                                value={this.state.Rating}
+                                value={this.state.show.inputRating}
                                 onChange={(e) => { this.setRating(e) }}
                             />
                         </label>
@@ -113,15 +117,14 @@ export default class ManagePage extends Component {
                         <label className="fieldName">
                             Image URL:
                         <input type="url"
-                                value={this.state.URL}
+                                value={this.state.show.inputURL}
                                 onChange={(e) => { this.setURL(e) }}
-
                             />
                         </label>
                         <br />
                         <button
                             className="create" type="button"
-                            onClick={() => this.saveTVShow()}>Create/Update</button>
+                            onClick={() => this.saveShow()}>Create/Update</button>
                     </form>
                 </div>
             </div>

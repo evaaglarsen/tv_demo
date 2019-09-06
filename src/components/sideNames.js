@@ -7,9 +7,14 @@ export default class SideNames extends Component {
     selectHandler = () => {
         console.log('selectHandler was clicked')
     }
-
+ 
     deleteHandler = () => {
         console.log('deleteHandler was clicked')
+        this.setState({
+            InputName: "",
+            InputRating: "",
+            InputURL: ""
+        })
     }
 
     renderDelete = () => {
@@ -24,6 +29,7 @@ export default class SideNames extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className="side-nav">
                 <button onClick={this.props.selectHandler}>
