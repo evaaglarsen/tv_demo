@@ -3,19 +3,45 @@ import './App.css';
 import ManagePage from './pages/managePage'
 import PreviewPage from './pages/previewPage'
 import TopNav from './components/topNav'
-import { Route } from 'react-router-dom'
-class App extends Component {
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+export default class App extends Component {
+  state = {
+    shows: []
+  }
 
-  //rendering the app
-  render() {
+  showDeleted = () => {
+    this.setState({
+      inputName: "",
+      inputRating: "",
+      inputURL: ""
+    })
+  }
+
+  saveShow = (showToSave) => {
+    this.setState((prevState) => ({
+      shows: [...prevState.shows, showToSave]
+    }))
+  }
+
+  renderManagePage = () => {
     return (
-      <div className="App">
-        <TopNav />
-        <Route exact path="/" component={ManagePage} />
-        <Route exact path="/preview-page" component={PreviewPage} />
-      </div>
+      <ManagePage
+        shows={this.state.shows}
+        showDeleted={this.showDeleted}
+        saveShow={this.saveShow}/>
+    )
+  }
+
+  render() {
+    console.log(this.state)
+    return (
+      <Router>
+        <div className="App">
+          <TopNav />
+          <Route exact path="/" component={this.renderManagePage} />
+          <Route exact path="/preview-page" component={PreviewPage} />
+        </div>
+      </Router>
     );
   }
 }
-
-export default App;

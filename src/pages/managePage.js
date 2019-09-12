@@ -1,87 +1,44 @@
-import React, { Component } from "react"
-import SideNames from '../components/sideNames'
+import React, { Component } from "react";
+import SideNames from '../components/sideNames';
+import PropTypes from 'prop-types';
 import './pages.css';
-export default class ManagePage extends Component {
+
+class ManagePage extends Component {
     state = {
-        show: {
-            inputName: "Enter name of show",
-            inputRating: "Enter Rating",
-            inputURL: "Enter URL",
-            savedName: "",
-            savedRating: "",
-            savedURL: ""
-        }
+        inputName: "",
+        inputRating: "",
+        inputURL: "",
     }
 
-    setName = (e) => {
+    selectHandler = () => {
         this.setState({
-            show: {
-                inputName: e.target.value,
-                inputRating: this.state.show.inputRating,
-                inputURL: this.state.show.inputURL
-            }
+            inputName: this.props.name
         })
     }
 
-    setRating = (e) => {
-        this.setState({
-            show: {
-                inputName: this.state.show.inputName,
-                inputRating: e.target.value,
-                inputURL: this.state.show.inputURL
-            }
-        })
-    }
+    deleteHandler = () => {
+        this.props.deleteHandler();
+                }
 
-    setURL = (e) => {
-        this.setState({
-            show: {
-                inputName: this.state.show.inputName,
-                inputRating: this.state.show.inputRating,
-                inputURL: e.target.value
-            }
-        })
-    }
-
-    //functions defined here
-    ShowSelected = () => {
-        console.log("the ShowSelected function ran")
-        this.setState({
-            inputName: this.state.show.inputName,
-            inputRating: this.state.show.inputRating,
-            inputURL: this.state.show.inputURL
-        })
-    }
-
-    ShowDeleted = () => {
-        console.log("the ShowDeleted function ran")
+    saveShow = (show) => {
+        this.props.saveShow(show);
         this.setState({
             inputName: "",
             inputRating: "",
-            inputURL: ""
-        })
-    }
-
-    saveShow = () => {
-        this.setState({
-            savedName: this.state.show.inputName,
-            savedRating: this.state.show.inputRating,
-            savedURL: this.state.show.inputURL,
-            inputName: "",
-            inputRating: "",
-            inputURL: ""
+            inputURL: "",
         })
     }
 
     renderShows = () => {
-        return (
-            <SideNames
-                name={this.state.savedName}
-                allowDelete={true}
-                selectHandler={this.tvShowSelected}
-                deleteHandler={this.tvShowDeleted} />
-        )
+        return this.props.shows.map((show, i) => {
+            return <SideNames key={i} name={show.name}
+            allowDelete={true}
+            selectHandler={this.tvShowSelected}
+            deleteHandler={this.tvShowDeleted} 
+            />
+        })
     }
+
 
     //rendering this page
     render() {
@@ -101,33 +58,54 @@ export default class ManagePage extends Component {
                         <label className="fieldName">
                             Name:
                         <input type="text"
-                                value={this.state.show.inputName}
-                                onChange={(e) => { this.setName(e) }}
-                            />
+                                value={this.state.inputName} onChange={(e) => {
+                                    this.setState({
+                                        inputName: e.target.value,
+                                    })
+                                }} placeholder="Show Name" />
                         </label>
                         <br />
                         <label className="fieldName">
                             Rating:
                         <input type="rating"
-                                value={this.state.show.inputRating}
-                                onChange={(e) => { this.setRating(e) }}
-                            />
+                                value={this.state.inputRating}
+                                onChange={(e) => {
+                                    this.setState({
+                                        inputRating: e.target.value,
+                                    })
+                                }} placeholder="Show Rating" />
                         </label>
                         <br />
                         <label className="fieldName">
                             Image URL:
                         <input type="url"
-                                value={this.state.show.inputURL}
-                                onChange={(e) => { this.setURL(e) }}
-                            />
+                                value={this.state.inputURL}
+                                onChange={(e) => {
+                                    this.setState({
+                                        inputURL: e.target.value,
+                                    })
+                                }} placeholder="Show URL" />
                         </label>
                         <br />
-                        <button
-                            className="create" type="button"
-                            onClick={() => this.saveShow()}>Create/Update</button>
+                        <button onClick={(e) => {
+                            e.preventDefault()
+                            this.saveShow({
+                                name: this.state.inputName,
+                                rating: this.state.inputRating,
+                                url: this.state.inputURL
+                            })
+                        }}>Create/Update</button>
                     </form>
                 </div>
             </div>
         )
     }
 }
+
+ManagePage.propTypes = {
+    show: PropTypes.object.isRequired,
+    showDeleted: PropTypes.func.isRequired,
+    saveShow: PropTypes.func.isRequired
+}
+
+export default ManagePage
