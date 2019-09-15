@@ -12,23 +12,24 @@ class PreviewPage extends Component {
     }
 
     showSelected = (event) => {
-        let id = event.currentTarget.id;
+        console.log(event)
         this.setState({
             selectedShow: {
-                name: this.props.shows[id].name,
-                rating: this.props.shows[id].rating,
-                imageUrl: this.props.show[id].imageUrl
+                name: event.name,
+                rating: event.rating,
+                imageUrl: event.imageUrl
             }
         })
     }
 
     renderShows = () => {
-        return (
-            <SideNames
-                name={this.props.name}
-                selectHandler={this.showSelected}
+        return this.props.shows.map((show, i) => {
+            return <SideNames key={i} name={show.name}
+                allowDelete={true}
+                selectHandler={() => this.showSelected(show)}
+                deleteHandler={this.showDeleted}
             />
-        )
+        })
     }
 
     render() {
