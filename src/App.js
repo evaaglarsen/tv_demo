@@ -28,7 +28,15 @@ export default class App extends Component {
       <ManagePage
         shows={this.state.shows}
         showDeleted={this.showDeleted}
-        saveShow={this.saveShow}/>
+        saveShow={this.saveShow} />
+    )
+  }
+
+  renderPreviewPage = () => {
+    return (
+      <PreviewPage
+        show={this.state.show} 
+        shows={this.state.shows}/>
     )
   }
 
@@ -39,7 +47,7 @@ export default class App extends Component {
         <div className="App">
           <TopNav />
           <Route exact path="/" component={this.renderManagePage} />
-          <Route exact path="/preview-page" component={PreviewPage} />
+          <Route exact path="/preview-page" component={this.renderPreviewPage} />
         </div>
       </Router>
     );

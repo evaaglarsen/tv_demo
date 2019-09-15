@@ -27,7 +27,9 @@ export default class SideNames extends Component {
         return (
             <div className="side-nav">
                 <p>{this.props.show}</p>
-                <button onClick={()=>this.props.selectHandler('message from child')}>
+                <button onClick={() =>
+                    this.props.selectHandler('message from child')}
+                    id={this.props.id}>
                     {this.props.name}
                 </button>
                 {this.renderDelete()}
@@ -37,8 +39,8 @@ export default class SideNames extends Component {
 }
 
 SideNames.propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     renderDelete: PropTypes.bool,
     deleteHandler: PropTypes.func,
-    selectHandler: PropTypes.func.isRequired
+    selectHandler: PropTypes.func
 }

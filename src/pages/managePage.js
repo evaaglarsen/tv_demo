@@ -7,18 +7,18 @@ class ManagePage extends Component {
     state = {
         inputName: "",
         inputRating: "",
-        inputURL: "",
+        inputURL: ""
     }
 
-    selectHandler = () => {
+    showSelected = (stringFromChild) => {
         this.setState({
-            inputName: this.props.name
-        })
+            inputShow: this.props.show
+        });
     }
 
-    deleteHandler = () => {
-        this.props.deleteHandler();
-                }
+    showDeleted = () => {
+        this.props.showDeleted();
+    }
 
     saveShow = (show) => {
         this.props.saveShow(show);
@@ -32,15 +32,13 @@ class ManagePage extends Component {
     renderShows = () => {
         return this.props.shows.map((show, i) => {
             return <SideNames key={i} name={show.name}
-            allowDelete={true}
-            selectHandler={this.tvShowSelected}
-            deleteHandler={this.tvShowDeleted} 
+                allowDelete={true}
+                selectHandler={this.showSelected}
+                deleteHandler={this.showDeleted}
             />
         })
     }
 
-
-    //rendering this page
     render() {
         console.log(this.state)
         return (
@@ -103,9 +101,9 @@ class ManagePage extends Component {
 }
 
 ManagePage.propTypes = {
-    show: PropTypes.object.isRequired,
-    showDeleted: PropTypes.func.isRequired,
-    saveShow: PropTypes.func.isRequired
+    show: PropTypes.array,
+    showDeleted: PropTypes.func,
+    saveShow: PropTypes.func
 }
 
 export default ManagePage
