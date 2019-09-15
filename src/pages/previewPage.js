@@ -26,7 +26,7 @@ class PreviewPage extends Component {
         return (
             <SideNames
                 name={this.props.name}
-                selectHandler={this.showSelected()}
+                selectHandler={this.showSelected}
             />
         )
     }
