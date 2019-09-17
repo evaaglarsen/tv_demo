@@ -34,29 +34,26 @@ class PreviewPage extends Component {
         })
     }
 
-    calcAvgRating = () => {
+    calcAvgRating = (shows) => {
         const tvShows = this.props.shows;
         if (!tvShows.length) {
             return 0;
         }
-        // else if (tvShows.length == 1) {
-        //     return show.rating;
-        // }
-        else {
-            return 100;
-            //trying to figure out how to access just the rating part of the array, so that I can 
-            //add those together using reduce and ultimately get the average. Trying to do this with 
-            //a combination of the map function and reduce, but so far, I haven't been having any luck.
-            //My code has been so convoluted by this point that I just deleted it.
-            
-    
+        else if (tvShows.length === 1) {
+            return tvShows.map(x =>x.rating)
+        }
+        else {         
+            return tvShows.map(x=>x.rating).reduce((x, y)=>Number(x)+Number(y))/tvShows.length
+        }
+    }
+
     render() {
         return (
             <div className="content-wrapper">
                 <div>
                     <div id="sideNames">
-                        <h2>Shows</h2>
-                        {this.calcAvgRating()}
+                        <h3>Avg Rating:</h3>{this.calcAvgRating()}
+                        <h3>Shows</h3>
                         {this.renderShows()}
                     </div>
                 </div>
