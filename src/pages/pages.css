@@ -28,3 +28,8 @@ form label, form input {
     display: flex;
     flex-direction: row;
 }
+
+h3 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+}

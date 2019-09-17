@@ -28,7 +28,8 @@ export default class SideNames extends Component {
             <div className="side-nav">
                 <p>{this.props.show}</p>
                 <button onClick={() =>
-                    this.props.selectHandler('message from child')}
+                    this.props.selectHandler('message from child')
+                }
                     id={this.props.id}>
                     {this.props.name}
                 </button>
