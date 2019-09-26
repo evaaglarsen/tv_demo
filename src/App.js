@@ -4,9 +4,24 @@ import ManagePage from './pages/managePage'
 import PreviewPage from './pages/previewPage'
 import TopNav from './components/topNav'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { async } from 'q';
 export default class App extends Component {
   state = {
     shows: []
+  }
+
+  componentDidMount = () => {
+    this.renderTvShows()
+  }
+  renderTvShows = async () => {
+    try {
+      const apiCall = await fetch("http://localhost:3001/getAllTvShows")
+      this.setState({
+        shows:await apiCall.json()
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   showDeleted = () => {
@@ -17,10 +32,23 @@ export default class App extends Component {
     })
   }
 
-  saveShow = (showToSave) => {
-    this.setState((prevState) => ({
-      shows: [...prevState.shows, showToSave]
-    }))
+  saveShow = async(showToSave) => {
+    try{
+      const postCall = await fetch("http://localhost:3001/tvDemo", {
+        method:"post",
+        headers: {
+          "Content-Type": "application/json"
+        }, 
+        body: JSON.stringify(showToSave)
+      }) 
+      await postCall
+      this.renderTvShows()
+    }catch(err){
+      console.log(err)
+    }
+    // this.setState((prevState) => ({
+    //   shows: [...prevState.shows, showToSave]
+    // }))
   }
 
   renderManagePage = () => {
@@ -35,8 +63,8 @@ export default class App extends Component {
   renderPreviewPage = () => {
     return (
       <PreviewPage
-        show={this.state.show} 
-        shows={this.state.shows}/>
+        show={this.state.show}
+        shows={this.state.shows} />
     )
   }
 
